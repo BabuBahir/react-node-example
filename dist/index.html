@@ -1,12 +1,31 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Node + React Starter</title>
-  </head>
-  <body>
-    <div id='root'/>
-  </body>
-  <script src="/bundle.js"></script>
+</head>
+
+<body>
+    <div id='root' />
+</body>
+<script src="/bundle.js"></script>
+<script>
+    var conf = confirm("Fullscreen mode?");
+    var docelem = document.documentElement;
+
+    if (conf == true) {
+        if (docelem.requestFullscreen) {
+            docelem.requestFullscreen();
+        } else if (docelem.mozRequestFullScreen) {
+            docelem.mozRequestFullScreen();
+        } else if (docelem.webkitRequestFullscreen) {
+            docelem.webkitRequestFullscreen();
+        } else if (docelem.msRequestFullscreen) {
+            docelem.msRequestFullscreen();
+        }
+    }
+</script>
+
 </html>
