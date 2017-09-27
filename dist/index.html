@@ -12,12 +12,10 @@
 </body>
 <script src="/bundle.js"></script>
 <script>
+    {
 
-window.onload = function () {
-    var conf = confirm("Fullscreen mode?");
-    var docelem = document.documentElement;
+        var docelem = document.documentElement;
 
-    if (conf == true) {
         if (docelem.requestFullscreen) {
             docelem.requestFullscreen();
         } else if (docelem.mozRequestFullScreen) {
@@ -27,8 +25,8 @@ window.onload = function () {
         } else if (docelem.msRequestFullscreen) {
             docelem.msRequestFullscreen();
         }
+
     }
-}
 </script>
 
 </html>
