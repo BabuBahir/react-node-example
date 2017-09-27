@@ -4,14 +4,30 @@ import PropTypes from 'prop-types';
 import 'src/assets/stylesheets/base.scss';
 
 
-function App({ name }) {
-  return (
-    <h1>Hello, {name}!</h1>
-  );
-};
+class App extends React.Component {
 
-App.propTypes = {
-  name: PropTypes.string,
-};
+   constructor(props) {
+      super(props);
+		
+      this.state = {
+         data: 'Initial data...'
+      }
 
+      this.updateState = this.updateState.bind(this);
+
+   };
+
+   updateState() {
+      this.setState({data: 'Data updated...'})
+   }
+
+   render() {
+      return (
+         <div>
+            <button onClick = {this.updateState}>CLICK</button>
+            <h4>{this.state.data}</h4>
+         </div>
+      );
+   }
+}
 export default App;
