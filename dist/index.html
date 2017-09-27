@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Node + React Starter</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -12,21 +13,28 @@
 </body>
 <script src="/bundle.js"></script>
 <script>
-    {
+    $(document).ready(function () {
+        $(document).one("click", function () {
+            var conf = confirm("Fullscreen mode?");
+            var docelem = document.documentElement;
 
-        var docelem = document.documentElement;
+            if (conf == true) {
+                if (docelem.requestFullscreen) {
+                    docelem.requestFullscreen();
+                } else if (docelem.mozRequestFullScreen) {
+                    docelem.mozRequestFullScreen();
+                } else if (docelem.webkitRequestFullScreen) {
+                    docelem.webkitRequestFullScreen();
+                } else if (docelem.msRequestFullscreen) {
+                    docelem.msRequestFullscreen();
+                }
+            }
+        })
 
-        if (docelem.requestFullscreen) {
-            docelem.requestFullscreen();
-        } else if (docelem.mozRequestFullScreen) {
-            docelem.mozRequestFullScreen();
-        } else if (docelem.webkitRequestFullscreen) {
-            docelem.webkitRequestFullscreen();
-        } else if (docelem.msRequestFullscreen) {
-            docelem.msRequestFullscreen();
-        }
-
-    }
+        $(document).on("click", function () {
+            console.log(23)
+        })
+    })
 </script>
 
 </html>
