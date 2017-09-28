@@ -43,7 +43,7 @@
     'dot-location': ['warn', 'property'],
     'eol-last': 'warn',
     'eqeqeq': ['warn', 'always'],
-    'indent': ['warn', 2, { "SwitchCase": 1 }],
+    //'indent': ['warn', 2, { "SwitchCase": 1 }],
     'guard-for-in': 'warn',
     'keyword-spacing': 'warn',
     'new-parens': 'warn',
