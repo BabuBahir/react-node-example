@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 
@@ -40,11 +41,23 @@ class FileUploader extends React.Component {
 
 
 class buttonsInstance extends React.Component {
+
+  constructor() {
+    super();
+    this.onItemClick = this.onItemClick.bind(this);
+  }
+ 
+  
+  onItemClick (event) {    
+    //this.inputElement.click();    
+      ReactDOM.findDOMNode(this.refs.myInput).click();      
+    }
+
   render() {
      return (
         <div>          
-           <input id="fileInput" type="file"  style={{ display:  'none'  }}/>
-           <Button bsStyle="info" bsSize="large" >Upload File </Button>
+           <input id="fileInput" type="file"  style={{ display:  'none'  }}  ref = "myInput"/>
+           <Button bsStyle="info" bsSize="large"  onClick={this.onItemClick} >Upload File </Button>
         </div> 
   );
 }
