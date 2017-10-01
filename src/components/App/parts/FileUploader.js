@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 
 
-class ImageComponent extends React.Component{
+class FileImage extends React.Component{
   render(){
     return(
        <div>
-         <img src={this.props.filenameProp}  alt="Smiley face" height="42" width="42"/>        
+         <img src={this.props.filenameProp}  alt="Smiley face"   width="100"/>        
        </div>
     )
   }
@@ -22,16 +22,19 @@ class FileUploader extends React.Component {
         super();
     
         this.state = {
-          filename: ''
+          filename: '',
+          numChildren :0
        }
     
         this.onItemClick = this.onItemClick.bind(this);
         this.readFile = this.readFile.bind(this);
+     
       }
      
-      
+
       onItemClick (event) {          
           ReactDOM.findDOMNode(this.refs.myInput).click();      
+          this.props.addChild();
       }
     
       readFile (event) {     
@@ -43,7 +46,7 @@ class FileUploader extends React.Component {
           render() {
             return (
                 <div>       
-                  <ImageComponent filenameProp={this.state.filename}/>   
+                  <FileImage filenameProp={this.state.filename}/>   
                   <input id="fileInput" type="file"  style={{ display:  'none'  }} onChange={(event)=> { this.readFile(event) }} ref = "myInput"/>
                   <Button bsStyle="info" bsSize="large"  onClick={this.onItemClick} >Upload File </Button>
                 </div> 
@@ -52,7 +55,33 @@ class FileUploader extends React.Component {
     
     }
     
+ class FileComponent extends React.Component {
+  constructor() {
+    super();    
+    this.state = {
+      numChildren :1
+   }
+   this.addChild = this.addChild.bind(this);
+  }
 
+  
+  addChild() {
+    var numChildren = (this.state.numChildren) +1;
+    this.setState({numChildren :numChildren}) 
+    console.log(71)      
+ }
+
+
+ render() {
+  const arr = [];
+  for (var i = 0; i < this.state.numChildren; i += 1) {
+      arr.push(<FileUploader key={i} addChild={this.addChild}/>);
+  }
+  return (<div>{arr}</div>);
+}
+
+
+ }
 
     
-export default FileUploader;
+export default FileComponent;
